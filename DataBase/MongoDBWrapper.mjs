@@ -23,6 +23,8 @@ class MongoDBWrapper {
 
   static dbName = authConfig.dbName;
 
+  static usersCollection = "Users";
+
   /**
    * @формат_записи
    *
@@ -79,7 +81,7 @@ class MongoDBWrapper {
 
       const { db, closeF } = await this.connectToDatabase();
 
-      const collection = db.collection("Users");
+      const collection = db.collection(this.usersCollection);
 
       const result = await collection.insertOne(newData);
 
@@ -101,7 +103,7 @@ class MongoDBWrapper {
     try {
       const { db, closeF } = await this.connectToDatabase();
 
-      const collection = db.collection("Users");
+      const collection = db.collection(this.usersCollection);
 
       await collection.updateOne(
         { userId: userId },
@@ -149,7 +151,7 @@ class MongoDBWrapper {
     try {
       const { db, closeF } = await this.connectToDatabase();
 
-      const collection = db.collection("Users");
+      const collection = db.collection(this.usersCollection);
 
       await collection.deleteOne({ userId: userId });
 
@@ -180,7 +182,7 @@ class MongoDBWrapper {
     try {
       const { db, closeF } = await this.connectToDatabase();
 
-      const collection = db.collection("Users");
+      const collection = db.collection(this.usersCollection);
 
       const user = await collection.findOne({ userId: userId });
 
