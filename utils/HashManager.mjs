@@ -9,5 +9,13 @@ class HashManager {
     const dataBase64 = hashBytes.toString("base64");
     return dataBase64;
   }
+
+  static isBase64 = (str) => {
+    try {
+      return btoa(atob(str)) === str;
+    } catch (err) {
+      return false;
+    }
+  };
 }
 export default HashManager;
