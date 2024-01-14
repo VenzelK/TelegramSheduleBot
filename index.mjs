@@ -1,3 +1,8 @@
+import { checkLock } from "./lock.js";
+
+// Проверяем и устанавливаем файл-мьютекс
+const cleanup = checkLock();
+
 import { createRequire } from "module";
 
 const require = createRequire(import.meta.url);
@@ -17,17 +22,12 @@ defineRoutes(bot);
 
 // Запуск бота
 try {
+  cosnt;
+
   bot.launch();
 } catch (err) {
   console.error("Критичекая ошибка бота: \n", err);
 }
 
-process.on("SIGINT", () => {
-  // Ваш код для корректного завершения работы бота
-  process.exit();
-});
-
-process.on("SIGTERM", () => {
-  // Ваш код для корректного завершения работы бота
-  process.exit();
-});
+process.on("SIGINT", cleanup);
+process.on("SIGTERM", cleanup);
