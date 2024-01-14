@@ -13,6 +13,16 @@ const { Telegraf } = require("telegraf");
 
 dotenv.config();
 
+import axios from "axios";
+
+axios
+  .get("poo.tomedu.ru")
+  .then((result) => {
+    console.log({ result });
+  })
+  .catch((err) => {
+    console.error({ err });
+  });
 // Создание бота
 const bot = new Telegraf(process.env.Telegram_Bot_Key);
 
