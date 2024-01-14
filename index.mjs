@@ -16,7 +16,7 @@ dotenv.config();
 import axios from "axios";
 
 axios
-  .get("poo.tomedu.ru")
+  .get("https://poo.tomedu.ru")
   .then((result) => {
     console.log({ result });
   })
