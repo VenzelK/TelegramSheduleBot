@@ -1,0 +1,28 @@
+{
+  "name": "telegramshedulebot",
+  "version": "1.0.0",
+  "description": "Bot for access NetCity platform with telegram bot",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VenzelK/TelegramSheduleBot.git"
+  },
+  "author": "VenzelK",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VenzelK/TelegramSheduleBot/issues"
+  },
+  "homepage": "https://github.com/VenzelK/TelegramSheduleBot#readme",
+  "dependencies": {
+    "axios": "^1.6.3",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "markdown-table": "^3.0.3",
+    "mongodb": "^6.3.0",
+    "telegraf": "^4.15.3"
+  }
+}

@@ -1,11 +1,22 @@
 import Controller from "./MainController.mjs";
 
 function defineRoutes(bot) {
-  bot.start(async (ctx) => await Controller.start(ctx).then());
+  bot.start(async (ctx) => await Controller.start(ctx));
+
+  bot.action("start", async (ctx) => await Controller.start(ctx));
 
   // Message Handle
 
   bot.on("text", async (ctx) => await Controller.handleMessage(ctx));
+
+  bot.action(
+    /selected_login:(.*)/,
+    async (ctx) => await Controller.handleSelectedLogin(ctx)
+  );
+
+  bot.action(/delete_account:(.*)/, async (ctx) =>
+    Controller.handleDeleteAccount(ctx)
+  );
 
   // Register
   bot.action(
@@ -24,15 +35,37 @@ function defineRoutes(bot) {
 
   bot.action("get_statement", async (ctx) => Controller.getStatement(ctx));
 
+  bot.action(
+    "get_user_settings",
+    async (ctx) => await Controller.getUserSettings(ctx)
+  );
+
   // Settings Menu
 
-  bot.action("get_user_settings", async (ctx) =>
-    Controller.getUserSettings(ctx)
+  bot.action(
+    "select_account",
+    async (ctx) => await Controller.selectAccount(ctx)
+  );
+
+  bot.action("add_account", async (ctx) => await Controller.addAccount(ctx));
+
+  bot.action("del_account", async (ctx) => await Controller.deleteAccount(ctx));
+
+  bot.action(
+    "get_delete_account_scene",
+    async (ctx) => await Controller.getDeleteAccountScene(ctx)
+  );
+
+  bot.action("del_user", async (ctx) => await Controller.deleteUser(ctx));
+
+  bot.action(
+    "get_delete_user_scene",
+    async (ctx) => await Controller.getDeleteUserScene(ctx)
   );
 
   // Download
 
-  bot.action("get_perfomance_xls", async (ctx) => await Controller.getXls());
+  bot.action("get_perfomance_xls", async (ctx) => await Controller.getXls(ctx));
 }
 
 export default defineRoutes;
