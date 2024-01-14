@@ -134,19 +134,6 @@ class Controller {
     }
 
     return;
-
-    // бекк557 3f59e05c
-
-    // const da = new NetTownApi(
-    //   "бекк557",
-    //   HashManager.hashAndBase64Encode("3f59e05c")
-    // );
-
-    // da.login().then((res) => {
-    //   console.log(res);
-    // });
-
-    // const registerFlag = this.checkRegister(userId);
   }
 
   static createNetTownApi(
