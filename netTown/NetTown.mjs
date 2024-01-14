@@ -251,16 +251,19 @@ class NetTownApi {
 
   _processErrorFromStatus(error) {
     //* Обработка ошибок
-    if (error.response.status / 100 >= 5) {
-      return { success: false, message: "Город не выстоял", data: null };
-    }
 
-    if (error.response.status / 100 >= 4) {
-      return {
-        success: false,
-        message: "Возможно были введены неверные данные",
-        data: null,
-      };
+    if (error.response) {
+      if (error.response.status / 100 >= 5) {
+        return { success: false, message: "Город не выстоял", data: null };
+      }
+
+      if (error.response.status / 100 >= 4) {
+        return {
+          success: false,
+          message: "Возможно были введены неверные данные",
+          data: null,
+        };
+      }
     } else {
       //* Справочная информация
       console.warn("Произошла неизвестная ошибка", {
