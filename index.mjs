@@ -22,8 +22,6 @@ defineRoutes(bot);
 
 // Запуск бота
 try {
-  cosnt;
-
   bot.launch();
 } catch (err) {
   console.error("Критичекая ошибка бота: \n", err);
