@@ -21,3 +21,13 @@ try {
 } catch (err) {
   console.error("Критичекая ошибка бота: \n", err);
 }
+
+process.on("SIGINT", () => {
+  // Ваш код для корректного завершения работы бота
+  process.exit();
+});
+
+process.on("SIGTERM", () => {
+  // Ваш код для корректного завершения работы бота
+  process.exit();
+});

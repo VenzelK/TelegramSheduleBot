@@ -14,4 +14,4 @@ RUN npm install
 COPY . .
 
 # Команда для запуска бота
-CMD ["npm", "start"]
+CMD ["nodemon", "index.mjs"]
