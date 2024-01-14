@@ -284,10 +284,6 @@ class Controller {
   }
 
   static async handleMessage(ctx) {
-    if (this.checkOld(ctx)) {
-      return;
-    }
-
     const userId = ctx.from.id;
     const message = ctx.message.text;
 
