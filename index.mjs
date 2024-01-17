@@ -1,8 +1,3 @@
-import { checkLock } from "./lock.js";
-
-// Проверяем и устанавливаем файл-мьютекс
-const cleanup = checkLock();
-
 import { createRequire } from "module";
 
 const require = createRequire(import.meta.url);
@@ -13,16 +8,6 @@ const { Telegraf } = require("telegraf");
 
 dotenv.config();
 
-import axios from "axios";
-
-axios
-  .get("https://poo.tomedu.ru")
-  .then((result) => {
-    console.log({ result });
-  })
-  .catch((err) => {
-    console.error({ err });
-  });
 // Создание бота
 const bot = new Telegraf(process.env.Telegram_Bot_Key);
 
@@ -36,6 +21,3 @@ try {
 } catch (err) {
   console.error("Критичекая ошибка бота: \n", err);
 }
-
-process.on("SIGINT", cleanup);
-process.on("SIGTERM", cleanup);
